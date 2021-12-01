@@ -1,5 +1,6 @@
 package com.telran.demoqa.tests;
 
+import com.telran.demoqa.data.UserData;
 import com.telran.demoqa.pages.HomePage;
 import com.telran.demoqa.pages.LoginPage;
 import org.testng.annotations.BeforeMethod;
@@ -9,12 +10,12 @@ public class LoginPageTests extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions(){
-        new HomePage(driver).tapBookStoreAppBtn().verifyLoginPage().clickLogin();
+        new HomePage(driver).getBookStore().verifyLoginPage().getLoginPage();
     }
 
     @Test
     public void loginPositiveTest(){
-        new LoginPage(driver).login("mnv2017","Nataly123*").verifyUserName("mnv2017").logout();
+        new LoginPage(driver).login(UserData.USER_NAME,UserData.USER_PASSWORD).verifyUserName("mnv2017").logout();
 
     }
 }

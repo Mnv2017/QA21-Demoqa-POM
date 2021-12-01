@@ -1,5 +1,6 @@
 package com.telran.demoqa.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,15 +23,7 @@ public class LoginPage extends PageBase {
     @FindBy(id = "login")
     WebElement loginBtn;
 
-    public LoginPage verifyLoginPage() {
-        if (loginBtn.isDisplayed()) {
-            System.out.println("*** Log in ***");
-        } else
-            System.out.println("*** Wrong page ***");
-        return this;
-    }
-
-    public LoginPage clickLogin(){
+    public LoginPage clickLogin() {
         System.out.println("***  Click Login ***");
         loginBtn.click();
         return this;
@@ -39,7 +32,7 @@ public class LoginPage extends PageBase {
     public ProfilePage login(String userN, String password) {
         type(userName, userN);
         type(pwd, password);
-        loginBtn.click();
+        click(loginBtn);
         return new ProfilePage(driver);
     }
 
@@ -50,4 +43,41 @@ public class LoginPage extends PageBase {
         return this;
     }
 
+    // перенести в BookStorePage
+
+//    @FindBy(id = "searchBox")
+//    WebElement searchInput;
+//
+//    public LoginPage typeInSearchFieldInput(String text) { // перенести в BookStorePage
+//        type(searchInput, text);
+//        return this;
+//    }
+
+//    @FindBy(xpath = "//span[@class='mr-2']/a")
+//    WebElement nameOfBook;
+//
+//    public String takeNameOfBook() {
+////        return  driver.findElement(By.xpath("//span[@class='mr-2']/a")).getText();
+//        return nameOfBook.getText();
+//    }
+
+//    public String verifyEmptyField() {
+//        return driver.findElement(By.cssSelector(".rt-tr-group:nth-child(1) .rt-td:nth-child(2)"))
+//                .getText();
+//    }
+//
+//    public LoginPage clickByFirstBook() {
+//        click(nameOfBook);
+//        return this;
+//    }
+
+//    @FindBy(css = ".text-right.fullButton")
+//    WebElement addToCollectionButton;
+//
+//    public LoginPage addToYourCollection() {
+//        clickWithJSExecutor(addToCollectionButton,0,500);
+//        pause(4000);
+//        driver.switchTo().alert().accept(); // нажимаем Ок на alert
+//        return this;
+//    }
 }
