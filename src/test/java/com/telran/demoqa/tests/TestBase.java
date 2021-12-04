@@ -1,7 +1,13 @@
 package com.telran.demoqa.tests;
 
+import com.telran.demoqa.pages.MyListener;
+import com.telran.demoqa.pages.PageBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
@@ -12,16 +18,18 @@ import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    public WebDriver driver;
+    public EventFiringWebDriver driver;
 
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
     @BeforeMethod
     public void setUp() {
-        driver = new ChromeDriver();
+        driver = new EventFiringWebDriver(new ChromeDriver());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://demoqa.com");
+
+        driver.register(new MyListener());
     }
 
     @BeforeMethod
@@ -35,7 +43,7 @@ public class TestBase {
             logger.info("### PASSED: test method " + result.getMethod().getMethodName());
         } else {
             logger.error("FAILED: test method " + result.getMethod().getMethodName());
-//            new PageBase(driver).takeScreenshot();
+            new PageBase(driver).takeScreenshot();
         }
         System.out.println("===========================");
     }

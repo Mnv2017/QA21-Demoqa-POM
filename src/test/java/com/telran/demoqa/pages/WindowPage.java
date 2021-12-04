@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,25 +42,25 @@ public class WindowPage extends PageBase {
         return this;
     }
 
-//    @FindBy(id = "messageWindowButton")
-//    WebElement messWindowBtn;
-//
-//    public WindowPage clickOnNewWindowMessageButton() {
-//        click(messWindowBtn);
-//        WebDriverWait wait = new WebDriverWait(driver, 5);
-//        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-//        System.out.println("Появилось второе окно");
-//        String windowHandler = driver.getWindowHandle();
-//        System.out.println("Текущее окно: " + windowHandler);
-//        List<String> messWindow2 = new ArrayList<>((driver.getWindowHandles()));
-//        System.out.println("Окна2:  " + messWindow2);
-//        String win2 = messWindow2.get(1);
-//        System.out.println("Окно с текстом: " + win2);
-//        driver.switchTo().window(win2);
-//        System.out.println("##### Заголовок окна:" + driver.getTitle());
-//        driver.manage().window().maximize();
-//        return this;
-//    }
+    @FindBy(id = "messageWindowButton")
+    WebElement messWindowBtn;
+
+    public WindowPage clickOnNewWindowMessageButton() {
+        click(messWindowBtn);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        System.out.println("Появилось второе окно");
+        String windowHandler = driver.getWindowHandle();
+        System.out.println("Текущее окно: " + windowHandler);
+        List<String> messWindow2 = new ArrayList<>((driver.getWindowHandles()));
+        System.out.println("Окна2:  " + messWindow2);
+        String win2 = messWindow2.get(1);
+        System.out.println("Окно с текстом: " + win2);
+        // здесь тест зависает
+        driver.switchTo().window(win2);
+        System.out.println("##### Заголовок окна:" + driver.getTitle());
+        return this;
+    }
 
     @FindBy(css = "body")
     WebElement body;
