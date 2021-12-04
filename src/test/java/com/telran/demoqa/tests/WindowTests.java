@@ -31,7 +31,7 @@ public class WindowTests extends TestBase {
     @Test
     public void newWindowMessageTest() {
         new WindowPage(driver).clickOnNewWindowMessageButton();
-        System.out.println("****--*--*   " + new WindowPage(driver).getTextMessageFromNewWindow());
-//        Assert.assertTrue(new WindowPage(driver).getTextMessageFromNewWindow().contains("Knowledge"));
+//        System.out.println("*****   " + new WindowPage(driver).getTextMessageFromNewWindow());
+        Assert.assertTrue(new WindowPage(driver).getTextMessageFromNewWindow().contains("Knowledge"));
     }
 }

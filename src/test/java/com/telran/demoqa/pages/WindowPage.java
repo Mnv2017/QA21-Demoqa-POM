@@ -49,16 +49,15 @@ public class WindowPage extends PageBase {
         click(messWindowBtn);
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        System.out.println("Появилось второе окно");
-        String windowHandler = driver.getWindowHandle();
-        System.out.println("Текущее окно: " + windowHandler);
+//        System.out.println("Появилось второе окно");
+//        String windowHandler = driver.getWindowHandle();
+//        System.out.println("Текущее окно: " + windowHandler);
         List<String> messWindow2 = new ArrayList<>((driver.getWindowHandles()));
-        System.out.println("Окна2:  " + messWindow2);
+//        System.out.println("Окна2:  " + messWindow2);
         String win2 = messWindow2.get(1);
-        System.out.println("Окно с текстом: " + win2);
-        // здесь тест зависает
+//        System.out.println("Окно с текстом: " + win2);
+        // здесь тест зависает c браузером Chrome
         driver.switchTo().window(win2);
-        System.out.println("##### Заголовок окна:" + driver.getTitle());
         return this;
     }
 
@@ -69,7 +68,6 @@ public class WindowPage extends PageBase {
         pause(2000);
         WebElement b = driver.findElement(By.cssSelector("body"));
         System.out.println("Элемент body: " + b);
-//        return body.getText();
-        return "---- Заглушка ----";
+        return body.getText();
     }
 }

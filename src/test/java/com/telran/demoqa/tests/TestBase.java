@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.GeckoDriverInfo;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
@@ -24,7 +26,8 @@ public class TestBase {
 
     @BeforeMethod
     public void setUp() {
-        driver = new EventFiringWebDriver(new ChromeDriver());
+//        driver = new EventFiringWebDriver(new ChromeDriver());
+        driver = new EventFiringWebDriver(new FirefoxDriver());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://demoqa.com");
