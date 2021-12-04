@@ -1,8 +1,12 @@
 package com.telran.demoqa.pages;
 
+import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.File;
+import java.io.IOException;
 
 public class PageBase { // класс для универсальных методов
     protected WebDriver driver;
@@ -48,6 +52,20 @@ public class PageBase { // класс для универсальных мето
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String takeScreenshot() {
+        File tmp = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File screenshot = new File("screenshot/screen-" + System.currentTimeMillis() + ".png");
+
+        try {
+
+            Files.copy(tmp, screenshot);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return screenshot.getAbsolutePath();
     }
 }
 

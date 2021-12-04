@@ -1,5 +1,6 @@
-package com.telran.demoqa.pages;
+package com.telran.demoqa.pages.bookstorePages;
 
+import com.telran.demoqa.pages.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,7 +57,7 @@ public class BookStorePage extends PageBase {
 
     public BookStorePage addToYourCollection() {
         clickWithJSExecutor(addToCollectionButton,0,500);
-        pause(2000);
+        pause(6000);
         driver.switchTo().alert().accept(); // нажимаем Ок на alert
         return this;
     }

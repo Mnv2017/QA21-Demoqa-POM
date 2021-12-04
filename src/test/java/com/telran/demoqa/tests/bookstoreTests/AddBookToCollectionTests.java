@@ -1,12 +1,14 @@
-package com.telran.demoqa.tests;
+package com.telran.demoqa.tests.bookstoreTests;
 
 import com.telran.demoqa.data.BookData;
 import com.telran.demoqa.data.UserData;
-import com.telran.demoqa.pages.BookStorePage;
-import com.telran.demoqa.pages.HomePage;
-import com.telran.demoqa.pages.LoginPage;
-import com.telran.demoqa.pages.SidePanelPage;
+import com.telran.demoqa.pages.*;
+import com.telran.demoqa.pages.bookstorePages.BookStorePage;
+import com.telran.demoqa.pages.bookstorePages.LoginPage;
+import com.telran.demoqa.pages.bookstorePages.ProfilePage;
+import com.telran.demoqa.tests.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -26,8 +28,12 @@ public class AddBookToCollectionTests extends TestBase {
                 .clickByFirstBook().addToYourCollection();
         new SidePanelPage(driver).selectProfile();
 
-//        Assert.assertTrue(new BookStorePage(driver).takeNameOfBook()
-//                .contains(BookData.BOOK_NAME));
+        Assert.assertTrue(new BookStorePage(driver).takeNameOfBook()
+                .contains(BookData.BOOK_NAME));
     }
 
+    @AfterMethod
+    public void postConditions(){
+        new ProfilePage(driver).clickOnTrashToDeleteBook();
+    }
 }

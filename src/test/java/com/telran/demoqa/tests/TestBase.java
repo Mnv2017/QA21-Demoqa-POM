@@ -7,13 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.internal.TestResult;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    WebDriver driver;
+    public WebDriver driver;
 
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
@@ -27,7 +26,7 @@ public class TestBase {
 
     @BeforeMethod
     public void startTest(Method m) {
-        logger.info("### Start test" + m.getName());
+        logger.info("### Start test " + m.getName());
     }
 
     @AfterMethod
@@ -36,6 +35,7 @@ public class TestBase {
             logger.info("### PASSED: test method " + result.getMethod().getMethodName());
         } else {
             logger.error("FAILED: test method " + result.getMethod().getMethodName());
+//            new PageBase(driver).takeScreenshot();
         }
         System.out.println("===========================");
     }

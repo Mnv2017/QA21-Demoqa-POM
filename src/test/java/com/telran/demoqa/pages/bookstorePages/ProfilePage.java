@@ -1,8 +1,11 @@
-package com.telran.demoqa.pages;
+package com.telran.demoqa.pages.bookstorePages;
 
+import com.telran.demoqa.pages.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class ProfilePage extends PageBase {
 
@@ -31,4 +34,19 @@ public class ProfilePage extends PageBase {
         return new LoginPage(driver);
     }
 
+    @FindBy(xpath = "//*[@id='delete-record-undefined']")
+    List<WebElement> booksList;
+
+    @FindBy(id = "closeSmallModal-ok")
+    WebElement okBtn;
+
+    public ProfilePage clickOnTrashToDeleteBook() {
+        pause(4000);
+        booksList.get(0).click();
+        pause(4000);
+        click(okBtn);
+        pause(4000);
+        driver.switchTo().alert().accept();
+        return this;
+    }
 }
