@@ -1,14 +1,9 @@
 package com.telran.demoqa.tests;
 
-import com.telran.demoqa.pages.MyListener;
+import com.telran.demoqa.helpers.MyListener;
 import com.telran.demoqa.pages.PageBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.GeckoDriverInfo;
-import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +48,7 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 
 }
