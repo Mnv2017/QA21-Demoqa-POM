@@ -35,11 +35,19 @@ public class SidePanelPage extends PageBase {
         return new WindowPage(driver);
     }
 
-    @FindBy(xpath = "//span[.='Select Menu']")
+    @FindBy(xpath = "//span[.='']")
     WebElement selectMenu;
 
     public SelectMenuPage selectSelectMenu() {
         clickWithJSExecutor(selectMenu, 0, 700);
         return new SelectMenuPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Practice Form']")
+    WebElement practiceForm;
+
+    public FormsPage selectPracticeForm(){
+        clickWithJSExecutor(practiceForm,0,500);
+        return new FormsPage(driver);
     }
 }

@@ -26,8 +26,8 @@ public class TestBase {
 
     @BeforeMethod
     public void setUp() {
-//        driver = new EventFiringWebDriver(new ChromeDriver());
-        driver = new EventFiringWebDriver(new FirefoxDriver());
+        driver = new EventFiringWebDriver(new ChromeDriver());
+//        driver = new EventFiringWebDriver(new FirefoxDriver());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://demoqa.com");
