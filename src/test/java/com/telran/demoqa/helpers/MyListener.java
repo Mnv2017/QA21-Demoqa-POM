@@ -1,4 +1,4 @@
-package com.telran.demoqa.pages;
+package com.telran.demoqa.helpers;
 
 import com.telran.demoqa.tests.TestBase;
 import org.openqa.selenium.By;
