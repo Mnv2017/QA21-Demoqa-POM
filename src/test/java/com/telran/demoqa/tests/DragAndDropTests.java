@@ -30,5 +30,9 @@ public class DragAndDropTests extends TestBase{
         new DragAndDropPage(driver).dragAndDropBy100();
     }
 
+    @Test
+    public void dropAcceptTest(){
+        new DragAndDropPage(driver).dragAndDropAccept();
+    }
 
 }

@@ -61,5 +61,37 @@ public class DragAndDropPage extends PageBase {
         return this;
     }
 
+    @FindBy(id = "droppableExample-tab-accept")
+    WebElement acceptTab;
 
+    @FindBy(id = "acceptable")
+    WebElement acceptableDragMe;
+
+    @FindBy(id = "notAcceptable")
+    WebElement notAcceptableDragMe;
+
+    @FindBy(css = "#acceptDropContainer #droppable")
+    WebElement dropHereAccept;
+
+    public DragAndDropPage dragAndDropAccept() {
+        clickWithJSExecutor(acceptTab, 0, 200);
+        Actions actions = new Actions(driver);
+        actions.dragAndDrop(notAcceptableDragMe, dropHereAccept).build().perform();
+
+        String text = dropHereAccept.getText();
+        if (text.equals("Drop here")) {
+            System.out.println("****   PASS: Not acceptable sourse is dropped to target as expected");
+        } else {
+            System.out.println("**** FAIL: Not acceptable sourse couldn't be dropped to target as expected");
+        }
+        actions.dragAndDrop(acceptableDragMe, dropHereAccept).build().perform();
+
+        text = dropHereAccept.getText();
+        if (text.equals("Dropped!")) {
+            System.out.println("****   PASS: Acceptable sourse is dropped to target as expected");
+        } else {
+            System.out.println("**** FAIL:  Acceptable sourse couldn't be dropped to target as expected");
+        }
+        return this;
+    }
 }
