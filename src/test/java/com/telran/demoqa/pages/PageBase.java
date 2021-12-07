@@ -46,6 +46,14 @@ public class PageBase { // класс для универсальных мето
         element.click();
     }
 
+    public void typeWithJSExecutor(WebElement element, int x, int y, String text) {
+        if (text != null) {
+            clickWithJSExecutor(element, x, y);
+            element.clear();
+            element.sendKeys(text);
+        }
+    }
+
     public void pause(int millis) {
         try {
             Thread.sleep(millis);
@@ -61,7 +69,7 @@ public class PageBase { // класс для универсальных мето
         try {
 
             Files.copy(tmp, screenshot);
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

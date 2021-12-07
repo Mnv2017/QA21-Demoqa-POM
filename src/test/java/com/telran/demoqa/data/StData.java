@@ -4,7 +4,7 @@ public class StData {
     public static final String FIRST_NAME = "Maria";
     public static final String LAST_NAME = "Marinina";
     public static final String EMAIL = "maria@gmail.com";
-    public static final String PHONE = "987654321";
+    public static final String PHONE = "9876543210";
     public static final String GENDER = "Female";
     public static final String B_DAY = "23 May 1985";
     public static final String[] SUBJECTS = {"Maths", "Chemistry", "English"};

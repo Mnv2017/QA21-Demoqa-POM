@@ -3,17 +3,14 @@ package com.telran.demoqa.helpers;
 import com.telran.demoqa.data.StData;
 import org.testng.annotations.DataProvider;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class DataProviders {
     @DataProvider
-    public Iterator<Object[]> newStudent() {
+    public static Iterator<Object[]> newStudent() {
         List<Object[]> list = new ArrayList<>() {{
             add(new Object[]{StData.FIRST_NAME, StData.LAST_NAME, StData.EMAIL, StData.PHONE, StData.GENDER, StData.B_DAY, StData.SUBJECTS, StData.HOBBIES, StData.FILE});
             add(new Object[]{StData.FIRST_NAME_TWO, StData.LAST_NAME_TWO, StData.EMAIL, StData.PHONE, StData.GENDER, StData.B_DAY, StData.SUBJECTS, StData.HOBBIES, StData.FILE});
@@ -22,7 +19,7 @@ public class DataProviders {
     }
 
     @DataProvider
-    public Iterator<Object[]> newStudentFromCSV() throws IOException {
+    public static Iterator<Object[]> newStudentFromCSV() throws IOException {
         List<Object[]> list = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/Students6.csv")));
         String line = reader.readLine();
@@ -57,6 +54,20 @@ public class DataProviders {
             line = reader.readLine();
         }
         return list.iterator();
+    }
+
+    @DataProvider
+    public static Iterator<Object[]> usingFile() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                DataProviders.class.getResourceAsStream("/Students5.csv")));
+        List<Object[]> userData = new ArrayList<Object[]>();
+        String line = in.readLine();
+        while (line != null) {
+            userData.add(line.split(","));
+            line = in.readLine();
+        }
+        in.close();
+        return userData.iterator();
     }
 
 
