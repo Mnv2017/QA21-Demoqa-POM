@@ -59,4 +59,27 @@ public class SidePanelPage extends PageBase {
         return new DragAndDropPage(driver);
     }
 
+    @FindBy(xpath = "//span[.='Text Box']")
+    WebElement textBox;
+
+    public ElementsPage selectTextBox() {
+        click(textBox);
+        return new ElementsPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement selectBrokenLinksAndImages;
+
+    public BrokenLinksImagesPages selectbrokenLinks() {
+        clickWithJSExecutor(selectBrokenLinksAndImages, 0, 700);
+        return new BrokenLinksImagesPages(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Links']")
+    WebElement selectLinks;
+
+    public BrokenLinksImagesPages selectLinks() {
+        clickWithJSExecutor(selectLinks, 0, 700);
+        return new BrokenLinksImagesPages(driver);
+    }
 }
