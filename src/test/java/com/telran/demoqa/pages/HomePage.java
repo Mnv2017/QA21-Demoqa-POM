@@ -53,9 +53,17 @@ public class HomePage extends PageBase {
     WebElement interactions;
 
 
-
     public SidePanelPage getInteractions() {
         clickWithJSExecutor(interactions, 0, 300);
         return new SidePanelPage(driver);
     }
+
+    @FindBy(xpath = "//h5[.='Elements']")
+    WebElement elements;
+
+    public SidePanelPage getElementsPage() {
+        clickWithJSExecutor(elements, 0, 300);
+        return new SidePanelPage(driver);
+    }
+
 }
