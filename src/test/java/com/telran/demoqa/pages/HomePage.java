@@ -11,7 +11,6 @@ public class HomePage extends PageBase {
         super(driver);
     }
 
-    //    @FindBy(xpath = " //body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[6]")
     @FindBy(xpath = "//div[@class='category-cards']/div[.='Book Store Application']")
     WebElement bookStoreAppBtn;
 
