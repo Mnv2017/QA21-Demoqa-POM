@@ -11,7 +11,7 @@ import java.util.List;
 public class DataProviders {
     @DataProvider
     public static Iterator<Object[]> newStudent() {
-        List<Object[]> list = new ArrayList<>() {{
+        List<Object[]> list = new ArrayList<Object[]>() {{
             add(new Object[]{StData.FIRST_NAME, StData.LAST_NAME, StData.EMAIL, StData.PHONE, StData.GENDER, StData.B_DAY, StData.SUBJECTS, StData.HOBBIES, StData.FILE});
             add(new Object[]{StData.FIRST_NAME_TWO, StData.LAST_NAME_TWO, StData.EMAIL, StData.PHONE, StData.GENDER, StData.B_DAY, StData.SUBJECTS, StData.HOBBIES, StData.FILE});
         }};
@@ -20,7 +20,7 @@ public class DataProviders {
 
     @DataProvider
     public static Iterator<Object[]> newStudentFromCSV() throws IOException {
-        List<Object[]> list = new ArrayList<>();
+        List<Object[]> list = new ArrayList<Object[]>();
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/Students6.csv")));
         String line = reader.readLine();
 

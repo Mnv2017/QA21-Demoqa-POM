@@ -82,4 +82,12 @@ public class SidePanelPage extends PageBase {
         clickWithJSExecutor(selectLinks, 0, 700);
         return new BrokenLinksImagesPages(driver);
     }
+
+    @FindBy(xpath = "//span[.='Tool Tips']")
+    WebElement toolTips;
+
+    public ToolTipsPage selectToolTips(){
+        clickWithJSExecutor(toolTips,0,700);
+        return new ToolTipsPage(driver);
+    }
 }

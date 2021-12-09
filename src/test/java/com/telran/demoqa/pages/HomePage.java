@@ -18,8 +18,8 @@ public class HomePage extends PageBase {
     WebElement alertsFrameAndWindow;
 
     public BookStorePage getBookStore() {
-//        clickWithJSExecutor(bookStoreAppBtn,0,500);
-        clickWithAction(bookStoreAppBtn);
+        clickWithJSExecutor(bookStoreAppBtn,0,500);
+//        clickWithAction(bookStoreAppBtn);
         return new BookStorePage(driver);
     }
 

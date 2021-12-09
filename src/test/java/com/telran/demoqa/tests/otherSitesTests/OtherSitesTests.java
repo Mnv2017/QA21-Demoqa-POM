@@ -27,6 +27,7 @@ public class OtherSitesTests {
 //        driver.get("https://yandex.ru"); // здесь все ссылки хорошие на момент выполнения теста
         driver.get("https://javarush.ru"); // тут одна битая ссылка из 50
 //        driver.get("https://www.tel-ran.de/"); // тест проходит только в Firefox (10 битых из 74), в Chrome падает в середине
+
     }
 
     @Test
